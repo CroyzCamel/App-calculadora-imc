@@ -2,6 +2,8 @@ package com.carlyle.calculadoraimc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.carlyle.calculadoraimc.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -49,5 +51,30 @@ class MainActivity : AppCompatActivity() {
 
         imc.toString()
         resultado.setText("IMC: $imc \n $mensagem")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         val inflate = menuInflater
+        inflate.inflate(R.menu.menu_princiapl,menu)
+        return true
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.reset ->{
+                val resetEditPeso = binding.editPeso
+                val resetEditAtura = binding.editAltura
+                val resetMensagem = binding.txtMensagem
+
+                resetEditPeso.setText("")
+                resetEditAtura.setText("")
+                resetMensagem.setText("")
+
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
